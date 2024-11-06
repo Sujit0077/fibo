@@ -1,0 +1,83 @@
+The Fibonacci sequence is a series of numbers in which each number is the sum of the two preceding ones. The sequence typically starts with 0 and 1. Mathematically, the 𝑛
+n-th Fibonacci number 𝐹(𝑛) F(n) is defined as:
+f(n)={0 if n=0,1 if n=1,f(n-1)+f(n-2) if n>1
+
+Applications of Fibonacci Sequence
+The Fibonacci sequence appears in various fields:
+Mathematics and Computer Science: Algorithm design, data structures, dynamic programming.
+Biology: Modeling population growth, phyllotaxis (arrangement of leaves).
+Economics and Stock Markets: Fibonacci retracement in technical analysis.
+
+Different Approaches to Calculate Fibonacci Numbers
+Iterative (Non-Recursive) Approach: Uses a loop to calculate Fibonacci numbers, which is efficient in terms of time and space.
+Recursive Approach: Solves the problem by breaking it down into smaller sub-problems. A naive recursive approach recalculates values multiple times, but using memoization can optimize it by storing intermediate results.
+
+Complexity Analysis for Iterative Approach
+Time Complexity: 
+𝑂(𝑛)
+O(n) — There is a single loop that runs n times.
+Space Complexity: 
+𝑂(1)
+O(1) — Only a constant amount of space is used (for variables a and b).
+
+Complexity Analysis for Recursive Approach (Without Memoization)
+Time Complexity: 
+𝑂(2^𝑛)
+O(2 ^n) — The number of calls grows exponentially as each call splits into two more calls.
+Space Complexity: 
+𝑂(𝑛)
+O(n) — Each recursive call adds a frame to the call stack, so the maximum depth of the recursion is 
+𝑛
+
+
+Complexity Analysis for Recursive Approach with Memoization
+Time Complexity: 
+𝑂(𝑛)
+O(n) — Each Fibonacci number is calculated only once, as the result is stored in a dictionary (memo).
+Space Complexity: 
+𝑂(𝑛)
+O(n) — The dictionary memo stores up to n Fibonacci numbers, and the recursion depth is 𝑂(𝑛)
+
+
+Choosing the Right Approach
+Iterative Approach: Best choice for large n due to linear time complexity and constant space. Suitable when memory is limited.
+Recursive Approach (Naive): Inefficient for large n due to exponential time complexity. Used mainly for educational purposes or when n is very small.
+Recursive with Memoization: Efficient alternative to naive recursion, as it avoids redundant calculations.
+
+
+
+Algorithm
+Input: An integer 
+𝑛
+n, the position of the desired Fibonacci number.
+Initialize:
+If n=0, return 0.
+If n=1, return 1.
+Otherwise, set two variables: a = 0 and b = 1.
+Loop:
+For each integer i from 2 to n:
+Calculate the next Fibonacci number as a + b.
+Update a to hold the value of b, and b to hold the new calculated Fibonacci number (a + b).
+Output: The value in b after the loop ends, which is the n-th Fibonacci number.
+
+Input: An integer 
+𝑛
+n, the position of the desired Fibonacci number.
+Base Cases:
+If n=0, return 0.
+If n=1, return 1.
+Recursive Step:
+For 𝑛>1, return the sum of fibonacci_recursive(n-1) + fibonacci_recursive(n-2).
+Output: The result of the recursive function call.
+
+Algorithm
+Input: An integer n, the position of the desired Fibonacci number.
+Initialize:
+Create a dictionary memo with base cases {0: 0, 1: 1}.
+Recursive Function (Helper):
+Define a helper function fibonacci_memo(n, memo) that:
+Checks if n is in memo:
+If yes, return memo[n].
+If no, calculate memo[n] as fibonacci_memo(n - 1, memo) + fibonacci_memo(n - 2, memo).
+Store the result in memo to avoid redundant calculations.
+Output: Call the helper function with fibonacci_memo(n, memo) and return the result.
